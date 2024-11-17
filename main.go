@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -47,7 +46,7 @@ func main() {
 	key := []byte(os.Args[3])
 	mode := os.Args[4]
 
-	data, err := ioutil.ReadFile(inputFile)
+	data, err := os.ReadFile(inputFile)
 	if err != nil {
 		fmt.Println("Error reading input file:", err)
 		return
@@ -65,7 +64,7 @@ func main() {
 		return
 	}
 
-	err = ioutil.WriteFile(outputFile, result, 0644)
+	err = os.WriteFile(outputFile, result, 0644)
 	if err != nil {
 		fmt.Println("Error writing output file:", err)
 		return
